@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, useMemo, useState } from 'react';
 // Checks === RegExp[]
 import checks, { securityLevels } from './utils/constants';
 
@@ -6,18 +6,10 @@ import './App.css';
 
 function App() {
   const [password, setPassword] = useState('');
-  // Used useState, but useRef could be used
-  const [securityLevel, setSecurityLevel] = useState<
-    'none' | 'easy' | 'medium' | 'strong'
-  >('none');
 
-  const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value.trim());
-  };
-
-  useEffect(() => {
+  const securityLevel = useMemo(() => {
     if (password.length === 0) {
-      setSecurityLevel(securityLevels[0]);
+      return securityLevels[0];
     } else {
       // Setting newSecurityLevel variable to the number of successful checks
       const newSecurityLevel = checks
@@ -27,9 +19,14 @@ function App() {
         )
         .filter((check) => check).length;
       // Setting level of security from the securityLevels[]
-      setSecurityLevel(securityLevels[newSecurityLevel]);
+      return securityLevels[newSecurityLevel];
     }
   }, [password]);
+
+  const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value.trim());
+  };
+
   return (
     <>
       <h1>Simple password strength checker</h1>
