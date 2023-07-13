@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+  font-family: sans-serif;
+}
+
+input {
+  width: 250px;
+
+  margin-top: 1rem;
+  padding: 1rem;
+
+  font-size: 1rem;
+}
+.indicator {
+  display: flex;
+  justify-content: space-between;
+
+  width: 250px;
+  height: 5px;
+  margin: 10px auto;
+}
+
+.indicator > div {
+  width: 33%;
+  height: inherit;
+  background-color: gray;
+}
+
+.not-8-symbols > div {
+  background-color: red !important;
+}
+
+.easy > div:first-of-type {
+  background-color: red;
+}
+.medium > div:not(:last-of-type) {
+  background-color: orange;
+}
+.strong > div {
+  background-color: green;
+}
