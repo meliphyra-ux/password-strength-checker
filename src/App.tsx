@@ -48,7 +48,7 @@ function App() {
           <div></div>
           <div></div>
         </div>
-        {password.length > 8 && securityLevel !== 'none' ? (
+        {password.length >= 8 && securityLevel !== 'none' ? (
           <span>{securityLevel[0].toUpperCase() + securityLevel.slice(1)}</span>
         ) : (
           <span>Not secure enought</span>
