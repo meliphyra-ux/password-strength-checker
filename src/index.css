@@ -23,22 +23,23 @@ input {
   margin: 10px auto;
 }
 
-.indicator > div {
+.indicator > li {
   width: 33%;
   height: inherit;
   background-color: gray;
+  list-style: none;
 }
 
-.not-8-symbols > div {
+.not-8-symbols > li {
   background-color: red !important;
 }
 
-.easy > div:first-of-type {
+.easy > li:first-of-type {
   background-color: red;
 }
-.medium > div:not(:last-of-type) {
+.medium > li:not(:last-of-type) {
   background-color: orange;
 }
-.strong > div {
+.strong > li {
   background-color: green;
 }
